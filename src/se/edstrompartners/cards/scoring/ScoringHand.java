@@ -7,17 +7,51 @@ import se.edstrompartners.cards.Card;
 public class ScoringHand{
 
     public enum Kind {
-        HIGHCARD, PAIR, TWOPAIR, SET, STRAIGHT, FLUSH, FULLHOUSE, QUADS, STRAIGHTFLUSH, ROYALFLUSH;
+        HIGHCARD(new HighCardChecker()),
+        PAIR(new PairChecker()),
+        TWOPAIR(new TwoPairChecker()),
+        SET(new SetChecker()),
+        STRAIGHT(new StraightChecker()),
+        FLUSH(new FlushChecker()),
+        FULLHOUSE(new FullHouseChecker()),
+        QUADS(new QuadChecker()),
+        STRAIGHTFLUSH(new StraightFlushChecker()),
+        ROYALFLUSH(new RoyalFlush());
+
+        Kind(HandChecker hc){
+            checker = hc;
+        }
+
+        private HandChecker checker;
+
+        public Optional<List<Card>> check(List<Card> cards){
+            return checker.check(cards);
+        }
     }
 
     private final List<Card> cards;
     private final Kind kind;
 
-    public ScoringHand(Kind kind, List<Card> hand, List<Card> cards){
+    private ScoringHand(Kind kind, List<Card> hand, List<Card> cards){
         this.kind = kind;
         ArrayList<Card> total = new ArrayList<>(hand);
         cards.stream().sorted().limit(Math.max(5 - hand.size(), 0)).forEach(total::add);
         this.cards = total;
+    }
+
+    static ScoringHand createBestHand(List<Card> cards){
+        if(cards.isEmpty()){
+            throw new IllegalArgumentException("List can not be empty.");
+        }
+        List<Kind> kinds = Arrays.asList(Kind.values());
+        Collections.reverse(kinds);
+        for(Kind k : kinds){
+            Optional<List<Card>> oh = k.check(cards);
+            if (oh.isPresent()){
+                return new ScoringHand(k, oh.get(), cards);
+            }
+        }
+        throw new IllegalStateException("No hand could be found.");
     }
 
     public String toString(){
@@ -58,6 +92,4 @@ public class ScoringHand{
 
 interface HandChecker {
     Optional<List<Card>> check(List<Card> cards);
-
-    ScoringHand.Kind kind();
 }

@@ -22,9 +22,4 @@ public class PairChecker implements HandChecker{
                 .findFirst();
 //                .map(hand -> new ScoringHand(ScoringHand.Kind.PAIR, hand, cards));
     }
-
-    @Override
-    public ScoringHand.Kind kind() {
-        return ScoringHand.Kind.PAIR;
-    }
 }

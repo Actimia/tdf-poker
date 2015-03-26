@@ -33,9 +33,4 @@ public class StraightChecker implements HandChecker {
         }
         return Optional.empty();
     }
-
-    @Override
-    public ScoringHand.Kind kind() {
-        return ScoringHand.Kind.STRAIGHT;
-    }
 }

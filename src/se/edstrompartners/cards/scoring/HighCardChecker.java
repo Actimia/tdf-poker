@@ -15,9 +15,4 @@ public class HighCardChecker implements HandChecker {
         List<Card> cs = cards.stream().sorted().limit(5).collect(Collectors.toList());
         return Optional.of(cs);
     }
-
-    @Override
-    public ScoringHand.Kind kind() {
-        return ScoringHand.Kind.HIGHCARD;
-    }
 }

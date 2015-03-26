@@ -13,11 +13,9 @@ public class RoyalFlush implements HandChecker{
     @Override
     public Optional<List<Card>> check(List<Card> cards) {
         StraightFlushChecker sfc = new StraightFlushChecker();
-        return sfc.check(cards).map(sf -> null);
-    }
-
-    @Override
-    public ScoringHand.Kind kind() {
-        return ScoringHand.Kind.ROYALFLUSH;
+        return sfc.check(cards)
+                .filter(sf -> sf.stream()
+                        .mapToInt(c -> c.rank.ordinal())
+                        .sum() == 50);
     }
 }

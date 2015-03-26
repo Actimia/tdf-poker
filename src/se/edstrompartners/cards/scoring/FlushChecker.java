@@ -15,11 +15,4 @@ public class FlushChecker implements HandChecker {
                 .sorted(ScoringHand.LIST_COMPARATOR)
                 .findFirst();
     }
-
-    @Override
-    public ScoringHand.Kind kind() {
-        return ScoringHand.Kind.FLUSH;
-    }
-
-
 }
