@@ -41,6 +41,7 @@ public class ScoringHand implements Comparable<ScoringHand>{
         ArrayList<Card> total = new ArrayList<>(hand);
         cards.stream().sorted().limit(Math.max(5 - hand.size(), 0)).forEach(total::add);
         this.cards = total;
+        Collections.sort(cards);
     }
 
     static ScoringHand createBestHand(List<Card> cards){
@@ -83,9 +84,11 @@ public class ScoringHand implements Comparable<ScoringHand>{
 
     public static final Comparator<List<Card>> LIST_COMPARATOR = (l1, l2) -> {
         List<Card> lhs = new ArrayList<>(l1);
-        lhs.sort(Collections.reverseOrder(Card::compareTo));
+        lhs.sort(Card.SUIT_INSENSITIVE.reversed());
         List<Card> rhs = new ArrayList<>(l2);
-        rhs.sort(Collections.reverseOrder(Card::compareTo));
+        rhs.sort(Card.SUIT_INSENSITIVE.reversed());
+
+        Comparator<Card> cardcmp = Card.SUIT_INSENSITIVE;
 
         Iterator<Card> lit = lhs.iterator();
         Iterator<Card> rit = rhs.iterator();
@@ -94,7 +97,7 @@ public class ScoringHand implements Comparable<ScoringHand>{
             Card l = lit.next();
             Card r = rit.next();
 
-            int cmp = l.compareTo(r);
+            int cmp = cardcmp.compare(l, r);
             if (cmp != 0) {
                 return cmp;
             }

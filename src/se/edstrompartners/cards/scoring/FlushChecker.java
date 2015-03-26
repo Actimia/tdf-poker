@@ -18,6 +18,6 @@ public class FlushChecker implements HandChecker {
 
     @Override
     public Comparator<List<Card>> comparator() {
-        return null;
+        return ScoringHand.LIST_COMPARATOR;
     }
 }

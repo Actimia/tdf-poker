@@ -1,5 +1,7 @@
 package se.edstrompartners.cards;
 
+import java.util.Comparator;
+
 public class Card implements Comparable<Card> {
     public final Suit suit;
     public final Rank rank;
@@ -14,10 +16,16 @@ public class Card implements Comparable<Card> {
         return rank.toString() + suit.toString();
     }
 
+
+    public static final Comparator<Card> SUIT_INSENSITIVE = (o1, o2) ->
+            o1.rank.ordinal() - o2.rank.ordinal();
+
+    public static final Comparator<Card> SUIT_SENSITIVE = (o1, o2) ->
+            o1.rank.ordinal() - o2.rank.ordinal() == 0 ? o1.suit.ordinal() - o2.suit.ordinal() : 0;
+
     @Override
     public int compareTo(Card o) {
-        return rank.ordinal() - o.rank.ordinal() == 0 ? suit.ordinal() - o.suit.ordinal() : rank
-                .ordinal() - o.rank.ordinal();
+        return SUIT_SENSITIVE.compare(this, o);
     }
 
     @Override

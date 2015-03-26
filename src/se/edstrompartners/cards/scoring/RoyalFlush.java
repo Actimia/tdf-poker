@@ -22,6 +22,6 @@ public class RoyalFlush implements HandChecker{
 
     @Override
     public Comparator<List<Card>> comparator() {
-        return null;
+        return (o1, o2) -> 0;
     }
 }
