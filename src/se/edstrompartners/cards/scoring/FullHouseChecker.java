@@ -42,7 +42,21 @@ public class FullHouseChecker implements HandChecker {
     @Override
     public Comparator<List<Card>> comparator() {
         return (o1, o2) -> {
-            return 0;
+            SetChecker sc = new SetChecker();
+
+            List<Card> q1 = sc.check(o1).get();
+            List<Card> q2 = sc.check(o2).get();
+            int cmp = ScoringHand.LIST_COMPARATOR.compare(q1, q2);
+            if (cmp != 0){
+                return cmp;
+            }
+
+            List<Card> o1s = new ArrayList<>(o1);
+            List<Card> o2s = new ArrayList<>(o2);
+            o1s.removeAll(q1);
+            o2s.removeAll(q2);
+
+            return ScoringHand.LIST_COMPARATOR.compare(o1s, o2s);
         };
     }
 }

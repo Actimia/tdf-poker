@@ -44,7 +44,7 @@ public class ScoringHand implements Comparable<ScoringHand>{
         Collections.sort(cards);
     }
 
-    static ScoringHand createBestHand(List<Card> cards){
+    public static ScoringHand createBestHand(List<Card> cards){
         if(cards.isEmpty()){
             throw new IllegalArgumentException("List can not be empty.");
         }
@@ -71,7 +71,7 @@ public class ScoringHand implements Comparable<ScoringHand>{
 
 
     public String toString(){
-        return kind.toString();
+        return kind.toString() + ": " + cards.toString();
     }
 
     public Kind kind(){

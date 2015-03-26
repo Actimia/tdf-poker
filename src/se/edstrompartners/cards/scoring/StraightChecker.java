@@ -36,6 +36,25 @@ public class StraightChecker implements HandChecker {
 
     @Override
     public Comparator<List<Card>> comparator() {
-        return null;
+        return (o1, o2) -> {
+            if (o1.equals(o2)) {
+                return 0;
+            }
+
+            List<Card> q1 = check(o1).get();
+            List<Card> q2 = check(o2).get();
+
+            int cmp = ScoringHand.LIST_COMPARATOR.compare(q1, q2);
+            if (cmp != 0){
+                return cmp;
+            }
+
+            List<Card> o1s = new ArrayList<>(o1);
+            List<Card> o2s = new ArrayList<>(o2);
+            o1s.removeAll(q1);
+            o2s.removeAll(q2);
+
+            return ScoringHand.LIST_COMPARATOR.compare(o1s, o2s);
+        };
     }
 }
