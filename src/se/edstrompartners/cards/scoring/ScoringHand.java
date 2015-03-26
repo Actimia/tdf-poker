@@ -27,6 +27,10 @@ public class ScoringHand implements Comparable<ScoringHand>{
         public Optional<List<Card>> check(List<Card> cards){
             return checker.check(cards);
         }
+
+        public Comparator<List<Card>> comparator(){
+            return checker.comparator();
+        }
     }
 
     private final List<Card> cards;
@@ -59,7 +63,7 @@ public class ScoringHand implements Comparable<ScoringHand>{
     public int compareTo(ScoringHand o) {
         int diff = kind.compareTo(o.kind);
         if (diff == 0) {
-
+            return kind.comparator().compare(cards, o.cards);
         }
         return diff;
     }

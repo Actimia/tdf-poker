@@ -33,4 +33,9 @@ public class StraightChecker implements HandChecker {
         }
         return Optional.empty();
     }
+
+    @Override
+    public Comparator<List<Card>> comparator() {
+        return null;
+    }
 }

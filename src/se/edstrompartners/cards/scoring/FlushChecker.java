@@ -15,4 +15,9 @@ public class FlushChecker implements HandChecker {
                 .sorted(ScoringHand.LIST_COMPARATOR)
                 .findFirst();
     }
+
+    @Override
+    public Comparator<List<Card>> comparator() {
+        return null;
+    }
 }

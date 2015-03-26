@@ -24,4 +24,9 @@ public class TwoPairChecker implements HandChecker {
         }
         return Optional.empty();
     }
+
+    @Override
+    public Comparator<List<Card>> comparator() {
+        return null;
+    }
 }

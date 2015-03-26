@@ -3,10 +3,7 @@ package se.edstrompartners.cards.scoring;
 import se.edstrompartners.cards.Card;
 import se.edstrompartners.cards.Rank;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -21,5 +18,10 @@ public class QuadChecker implements HandChecker {
                 .map(map::get)
                 .filter(l -> l.size() >= 4)
                 .findFirst();
+    }
+
+    @Override
+    public Comparator<List<Card>> comparator() {
+        return null;
     }
 }

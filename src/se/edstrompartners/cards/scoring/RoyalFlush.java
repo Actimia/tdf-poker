@@ -2,6 +2,7 @@ package se.edstrompartners.cards.scoring;
 
 import se.edstrompartners.cards.Card;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,5 +18,10 @@ public class RoyalFlush implements HandChecker{
                 .filter(sf -> sf.stream()
                         .mapToInt(c -> c.rank.ordinal())
                         .sum() == 50);
+    }
+
+    @Override
+    public Comparator<List<Card>> comparator() {
+        return null;
     }
 }

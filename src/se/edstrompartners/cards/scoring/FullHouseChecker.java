@@ -6,9 +6,6 @@ import se.edstrompartners.cards.Rank;
 import java.util.*;
 import java.util.stream.Collectors;
 
-/**
- * Created by actim_000 on 2015-03-26.
- */
 public class FullHouseChecker implements HandChecker {
 
     @Override
@@ -38,8 +35,14 @@ public class FullHouseChecker implements HandChecker {
                         p.addAll(set);
                         return p;
                     });
-//                    .map(p -> new ScoringHand(ScoringHand.Kind.FULLHOUSE, p, cards));
         }
         return Optional.empty();
+    }
+
+    @Override
+    public Comparator<List<Card>> comparator() {
+        return (o1, o2) -> {
+            return 0;
+        };
     }
 }

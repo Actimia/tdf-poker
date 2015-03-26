@@ -3,6 +3,7 @@ package se.edstrompartners.cards.scoring;
 import se.edstrompartners.cards.Card;
 import se.edstrompartners.cards.Suit;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -25,5 +26,10 @@ public class StraightFlushChecker implements HandChecker {
                 .sorted(ScoringHand.LIST_COMPARATOR)
                 .findFirst();
 
+    }
+
+    @Override
+    public Comparator<List<Card>> comparator() {
+        return null;
     }
 }
