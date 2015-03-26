@@ -1,2 +1,4 @@
 .idea/
 tdf-poker.iml
+out/
+.idea/workspace.xml

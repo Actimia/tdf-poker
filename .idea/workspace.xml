@@ -2,23 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac3d578d-c800-4f94-98d9-f50ae7ff9437" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/QuadChecker.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/QuadCheckerTest.java" />
-      <change type="DELETED" beforePath="C:\dev\tdf-poker\tdf-poker.iml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tdf-poker/se/edstrompartners/cards/Deck.class" afterPath="$PROJECT_DIR$/out/production/tdf-poker/se/edstrompartners/cards/Deck.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tdf-poker/se/edstrompartners/cards/scoring/StraightFlushCheckerTest.class" afterPath="$PROJECT_DIR$/out/production/tdf-poker/se/edstrompartners/cards/scoring/StraightFlushCheckerTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/edstrompartners/cards/Deck.java" afterPath="$PROJECT_DIR$/src/se/edstrompartners/cards/Deck.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/FlushChecker.java" afterPath="$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/FlushChecker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/FullHouseChecker.java" afterPath="$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/FullHouseChecker.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/HighCardChecker.java" afterPath="$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/HighCardChecker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/PairChecker.java" afterPath="$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/PairChecker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/RoyalFlush.java" afterPath="$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/RoyalFlush.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/ScoringHand.java" afterPath="$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/ScoringHand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/SetChecker.java" afterPath="$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/SetChecker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/StraightChecker.java" afterPath="$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/StraightChecker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/StraightFlushChecker.java" afterPath="$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/StraightFlushChecker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/TwoPairChecker.java" afterPath="$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/TwoPairChecker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="tdf-poker.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,29 +25,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="PairChecker.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/PairChecker.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ScoringHand.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ScoringHand.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/ScoringHand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="93" column="49" selection-start-line="93" selection-start-column="49" selection-end-line="93" selection-end-column="49" />
+            <state vertical-scroll-proportion="1.1142217">
+              <caret line="106" column="40" selection-start-line="106" selection-start-column="40" selection-end-line="106" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#568#569#0" expanded="true" />
-                <element signature="e#604#605#0" expanded="true" />
-                <element signature="e#704#705#0" expanded="true" />
-                <element signature="e#755#756#0" expanded="true" />
+                <element signature="e#602#603#0" expanded="true" />
+                <element signature="e#638#639#0" expanded="true" />
+                <element signature="e#738#739#0" expanded="true" />
+                <element signature="e#789#790#0" expanded="true" />
+                <element signature="e#1871#1872#0" expanded="true" />
+                <element signature="e#1909#1910#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -84,10 +59,22 @@
         <entry file="file://$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/HighCardChecker.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+              <caret line="21" column="43" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#571#572#0" expanded="true" />
+                <element signature="e#621#622#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Card.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/se/edstrompartners/cards/Card.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -152,11 +139,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TwoPairChecker.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TwoPairChecker.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/TwoPairChecker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.47592387">
-              <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="22" column="38" selection-start-line="22" selection-start-column="38" selection-end-line="22" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -196,9 +183,7 @@
         <option value="$PROJECT_DIR$/src/se/edstrompartners/cards/Deck.java" />
         <option value="$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/QuadCheckerTest.java" />
         <option value="$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/FlushChecker.java" />
-        <option value="$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/ScoringHand.java" />
         <option value="$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/FullHouseChecker.java" />
-        <option value="$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/HighCardChecker.java" />
         <option value="$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/PairChecker.java" />
         <option value="$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/QuadChecker.java" />
         <option value="$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/RoyalFlush.java" />
@@ -206,6 +191,8 @@
         <option value="$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/StraightChecker.java" />
         <option value="$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/StraightFlushChecker.java" />
         <option value="$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/TwoPairChecker.java" />
+        <option value="$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/HighCardChecker.java" />
+        <option value="$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/ScoringHand.java" />
       </list>
     </option>
   </component>
@@ -361,7 +348,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="recentsLimit" value="5" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Console Font" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="dynamic.classpath" value="false" />
     <property name="OverrideImplement.combined" value="true" />
@@ -683,6 +670,13 @@
       <option name="number" value="Default" />
       <updated>1427383317968</updated>
     </task>
+    <task id="LOCAL-00001" summary="Removed the kind method from HandChecker.">
+      <created>1427408187986</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1427408187986</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -716,6 +710,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Removed the kind method from HandChecker." />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed the kind method from HandChecker." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -796,14 +794,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/edstrompartners/cards/Card.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/se/edstrompartners/cards/Board.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -823,40 +813,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/FlushChecker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/ScoringHand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="93" column="49" selection-start-line="93" selection-start-column="49" selection-end-line="93" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#568#569#0" expanded="true" />
-            <element signature="e#604#605#0" expanded="true" />
-            <element signature="e#704#705#0" expanded="true" />
-            <element signature="e#755#756#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/FullHouseChecker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="43" column="5" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/HighCardChecker.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
@@ -928,10 +884,56 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/TwoPairChecker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.47592387">
-          <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="38" selection-start-line="22" selection-start-column="38" selection-end-line="22" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/edstrompartners/cards/Card.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/FullHouseChecker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="43" column="5" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/HighCardChecker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="43" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#571#572#0" expanded="true" />
+            <element signature="e#621#622#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/edstrompartners/cards/scoring/ScoringHand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.1142217">
+          <caret line="106" column="40" selection-start-line="106" selection-start-column="40" selection-end-line="106" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#602#603#0" expanded="true" />
+            <element signature="e#638#639#0" expanded="true" />
+            <element signature="e#738#739#0" expanded="true" />
+            <element signature="e#789#790#0" expanded="true" />
+            <element signature="e#1871#1872#0" expanded="true" />
+            <element signature="e#1909#1910#0" expanded="true" />
           </folding>
         </state>
       </provider>

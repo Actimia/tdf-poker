@@ -4,9 +4,9 @@ import java.util.*;
 
 import se.edstrompartners.cards.Card;
 
-public class ScoringHand{
+public class ScoringHand implements Comparable<ScoringHand>{
 
-    public enum Kind {
+    public enum Kind{
         HIGHCARD(new HighCardChecker()),
         PAIR(new PairChecker()),
         TWOPAIR(new TwoPairChecker()),
@@ -54,6 +54,17 @@ public class ScoringHand{
         throw new IllegalStateException("No hand could be found.");
     }
 
+
+    @Override
+    public int compareTo(ScoringHand o) {
+        int diff = kind.compareTo(o.kind);
+        if (diff == 0) {
+
+        }
+        return diff;
+    }
+
+
     public String toString(){
         return kind.toString();
     }
@@ -92,4 +103,6 @@ public class ScoringHand{
 
 interface HandChecker {
     Optional<List<Card>> check(List<Card> cards);
+
+    Comparator<List<Card>> comparator();
 }
