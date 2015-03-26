@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Deck {
-    List<Card> cards;
+    private List<Card> cards;
 
     public Deck() {
         cards = Stream.of(Suit.values())

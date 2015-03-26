@@ -42,9 +42,4 @@ public class FullHouseChecker implements HandChecker {
         }
         return Optional.empty();
     }
-
-    @Override
-    public ScoringHand.Kind kind() {
-        return ScoringHand.Kind.FULLHOUSE;
-    }
 }

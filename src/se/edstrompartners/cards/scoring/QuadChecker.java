@@ -9,18 +9,17 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class SetChecker implements HandChecker{
-
+/**
+ * Created by actim_000 on 2015-03-26.
+ */
+public class QuadChecker implements HandChecker {
     @Override
     public Optional<List<Card>> check(List<Card> cards) {
-        Map<Rank, List<Card>> map = cards.stream()
-                .collect(Collectors.groupingBy(c -> c.rank));
-        // almost the same code as for Pair, check that code for comments.
+        Map<Rank, List<Card>> map = cards.stream().collect(Collectors.groupingBy(c -> c.rank));
         return map.keySet().stream()
                 .sorted(Collections.reverseOrder())
                 .map(map::get)
-                .filter(cs -> cs.size() >= 3)
+                .filter(l -> l.size() >= 4)
                 .findFirst();
-//                .map(hand -> new ScoringHand(ScoringHand.Kind.SET, hand, cards));
     }
 }

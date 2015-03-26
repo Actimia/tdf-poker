@@ -26,9 +26,4 @@ public class StraightFlushChecker implements HandChecker {
                 .findFirst();
 
     }
-
-    @Override
-    public ScoringHand.Kind kind() {
-        return ScoringHand.Kind.STRAIGHTFLUSH;
-    }
 }
