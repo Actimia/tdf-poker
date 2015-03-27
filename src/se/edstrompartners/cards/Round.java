@@ -7,17 +7,16 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-/**
- * Created by actim_000 on 2015-03-27.
- */
 public class Round {
 
     private Deck deck = new Deck();
     private List<Card> board = new ArrayList<>();
     private List<Player> players;
     private Pot pot = new Pot();
+    private Game game;
 
     public Round(Game game) {
+        this.game = game;
         players = new ArrayList<>(game.getPlayers());
 
         Player big = players.get(players.size() - 1);
@@ -36,18 +35,23 @@ public class Round {
     public void play() {
         bettingRound();
 
-        dealFlop();
-        pot.newRound();
-        bettingRound();
+        if (players.size() > 1) {
+            dealFlop();
+            pot.newRound();
+            bettingRound();
+        }
 
-        dealTurn();
-        pot.newRound();
-        bettingRound();
+        if (players.size() > 1) {
+            dealTurn();
+            pot.newRound();
+            bettingRound();
+        }
 
-        dealRiver();
-        pot.newRound();
-        bettingRound();
-
+        if (players.size() > 1) {
+            dealRiver();
+            pot.newRound();
+            bettingRound();
+        }
         BestHand winner = checkWinner();
         winner.p.addChips(pot.getTotal());
         System.out.println(this);
@@ -57,18 +61,29 @@ public class Round {
     private void bettingRound() {
 
         // first an initial round of betting
-        for (Player p : players) {
+        Iterator<Player> pit = players.iterator();
+        while (pit.hasNext()) {
+            Player p = pit.next();
             int toCall = pot.toCall(p);
             int bet = p.makePlay(toCall, this);
-            pot.bet(p, bet);
+            if (bet == -1) {
+                pot.fold(p);
+                pit.remove();
+            } else {
+                pot.bet(p, bet);
+            }
         }
         // then we bet until everyone is happy
-        Iterator<Player> pit = players.iterator();
+        pit = players.iterator();
         while (!pot.bettingDone() && pit.hasNext()) {
             Player p = pit.next();
             int toCall = pot.toCall(p);
             int bet = p.makePlay(toCall, this);
-            pot.bet(p, bet);
+            if (bet == -1) {
+                pot.fold(p);
+            } else {
+                pot.bet(p, bet);
+            }
         }
     }
 
@@ -125,8 +140,13 @@ public class Round {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        players.forEach(p -> {
-            sb.append(p);
+        game.getPlayers().forEach(p -> {
+            if (!players.contains(p)) {
+                sb.append(p.getRoundState());
+            } else {
+                sb.append(p);
+            }
+
             sb.append("\n");
         });
         sb.append("\n");
@@ -136,6 +156,8 @@ public class Round {
     }
 
     public void printCurrentState() {
+        System.out.println();
+        System.out.println("Pot: " + pot.getTotal() + ", current bet: " + pot.getCurrent());
         players.stream()
                 .map(Player::getRoundState)
                 .forEach(System.out::println);

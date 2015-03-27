@@ -5,9 +5,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * Created by actim_000 on 2015-03-26.
- */
 public class Player {
 
     private static final String HIDDEN_CARDS = "\u001B[30;47m??\u001B[0m  \u001B[30;" +
@@ -41,7 +38,8 @@ public class Player {
     }
 
     public int makePlay(int toCall, Round r) {
-        return toCall;
+        return Math.random() < 0.1 ? -1 : toCall;
+//        return -1;
     }
 
     @Override

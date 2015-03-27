@@ -3,9 +3,6 @@ package se.edstrompartners.cards;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by actim_000 on 2015-03-27.
- */
 public class Pot {
     private int total;
     private int current;
@@ -56,5 +53,9 @@ public class Pot {
         } else {
             return current - pcur;
         }
+    }
+
+    public int getCurrent() {
+        return current;
     }
 }
