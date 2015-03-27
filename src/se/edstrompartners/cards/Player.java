@@ -20,7 +20,7 @@ public class Player {
     public void addCard(Card c) {
         hand.add(c);
     }
-
+    public List<Card> getHand(){ return hand; }
     @Override
     public String toString() {
         return hand.toString();

@@ -1,8 +1,8 @@
 package se.edstrompartners.cards;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import se.edstrompartners.cards.scoring.ScoringHand;
+
+import java.util.*;
 
 import static se.edstrompartners.cards.Util.iota;
 import static java.util.stream.Collectors.*;
@@ -44,6 +44,36 @@ public class Board {
         deck.deal(board);
     }
 
+
+    public void checkWinner(){
+
+        class BestHand implements  Comparable<BestHand>  {
+            public Player p;
+            public ScoringHand s;
+
+            public BestHand(Player p, ScoringHand s){
+                this.p = p;
+                this.s = s;
+            }
+            @Override
+            public int compareTo(BestHand o) {
+                return s.compareTo(o.s);
+            }
+        }
+        
+        List<BestHand> bestHands = new ArrayList<>();
+        for(Player p: players){
+            ArrayList<Card> c = new ArrayList(p.getHand());
+            c.addAll(board);
+            bestHands.add(new BestHand(p, ScoringHand.createBestHand(c)));
+        }
+        Collections.sort(bestHands);
+        Collections.reverse(bestHands);
+
+
+        System.out.println(bestHands.get(0).s);
+
+    }
     private static List<Card> sorted(List<Card> cs){
         ArrayList<Card> css = new ArrayList<>(cs);
         Collections.sort(css);

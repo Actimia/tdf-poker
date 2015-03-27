@@ -14,5 +14,7 @@ public class Main {
 
         b.dealRiver();
         System.out.println(b);
+
+        b.checkWinner();
     }
 }
