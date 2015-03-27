@@ -56,6 +56,9 @@ public class ScoringHand implements Comparable<ScoringHand> {
         this.cards.addAll(rest);
     }
 
+    /**
+     * Creates the best scoring hand from the list of cards provided.
+     */
     public static ScoringHand createBestHand(List<Card> cards) {
         if (cards.isEmpty()) {
             throw new IllegalArgumentException("List can not be empty.");
@@ -85,6 +88,9 @@ public class ScoringHand implements Comparable<ScoringHand> {
         return this.compareTo(sh) == 0;
     }
 
+    /**
+     * Determines which of two hands is the better.
+     */
     @Override
     public int compareTo(ScoringHand o) {
         int diff = kind.compareTo(o.kind);
@@ -96,7 +102,9 @@ public class ScoringHand implements Comparable<ScoringHand> {
 
 
     public String toString() {
-        return kind.toString() + ": " + cards.toString();
+        return kind.toString() + ": " + cards.stream()
+                .map(Card::toString)
+                .collect(Collectors.joining(" "));
     }
 
     public Kind kind() {
@@ -107,6 +115,13 @@ public class ScoringHand implements Comparable<ScoringHand> {
         return cards;
     }
 
+    /**
+     * Compares two sequences of cards, in a suit insensitive way, such that the highest cards of
+     * both sequences are compared first, and if they are equal the comparison continues until
+     * one or both lists run out of elements. In that case the shorter list is said to be less
+     * than the longer one. If they are the same length with the same elements (suit insensitive)
+     * they are equal.
+     */
     public static final Comparator<List<Card>> LIST_COMPARATOR = (l1, l2) -> {
         List<Card> lhs = new ArrayList<>(l1);
         lhs.sort(Card.SUIT_INSENSITIVE);
@@ -138,17 +153,17 @@ interface HandChecker {
      * Should optionally return the list of cards used for the hand (but not necessarily the rest
      * of the cards) or an empty optional.
      *
+     * For example, a pair checker should for the input AJ83A25 return AA or possibly (but not
+     * required) AAJ85. The order of cards should be in highest-scoring order. For example the hand
+     * K3A2Q should be ordered as 32AKQ, not AKQ32, since this straight is counted as 3-high. A
+     * full house should have the set before the pair, regardless of actual card ranks.
+     *
      * If multiple hands are possible of the same kind, the best one should be returned, for
      * example in the hand 456789Q, an implementation checking for straights should return 98765
      * and not 87654.
      *
      * A hand should be returned even if it will be superseded by another type of hand, ie a set
      * should be reported as a pair as well, and a full house should also be two pairs.
-     *
-     * For example, a pair checker should for the input AJ83A25 return AA or possibly (but not
-     * required) AAJ85. The order of cards should be in highest-scoring order. For example the hand
-     * K3A2Q should be ordered as 32AKQ, not AKQ32, since this straight is counted as 3-high. A
-     * full house should have the set before the pair, regardless of actual card ranks.
      *
      * @param cards The list of cards to be checked.
      * @return Optional list of cards used to build the best hand possible of the kind, or empty

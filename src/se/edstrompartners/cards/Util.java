@@ -2,14 +2,30 @@ package se.edstrompartners.cards;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Util {
 
+    /**
+     * Creates a stream of ints ranging from 0 up i (exclusive).
+     */
     public static IntStream iota(int i) {
         return IntStream.range(0, i);
     }
 
+    /**
+     * Simple DSL for quickly creating lists of cards (mainly for unit testing).
+     *
+     * Syntax is [SUIT][RANK] as a single letter (ex DQ for queen of diamonds). spaces, commas
+     * and 0 is ignored (so 10 is lexed as 1). Some examples of valid sequences are:
+     *
+     * "DQ HQ C4"
+     * "CA,DA,HA,S4,S3"
+     * "C10D10HAS4"
+     *
+     * Returns the cards in the same order as the input.
+     */
     public static List<Card> quickHand(String in) {
         in = in.replaceAll("[ ,0]", "");
         in = in.toUpperCase();
@@ -17,7 +33,7 @@ public class Util {
         for (int i = 0; i < in.length(); i += 2) {
             char rank = in.charAt(i + 1);
             char suit = in.charAt(i);
-            Suit s = null;
+            Suit s;
             switch (suit) {
                 case 'S':
                     s = Suit.SPADES;
@@ -34,7 +50,7 @@ public class Util {
                 default: throw new IllegalArgumentException("Malformed input string");
             }
 
-            Rank r = null;
+            Rank r;
             switch (rank) {
                 case '2':
                     r = Rank.TWO;
@@ -81,5 +97,11 @@ public class Util {
         }
 
         return cards;
+    }
+
+    public static String formatCardList(List<Card> cards) {
+        return cards.stream()
+                .map(Card::toString)
+                .collect(Collectors.joining(" "));
     }
 }

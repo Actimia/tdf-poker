@@ -19,14 +19,16 @@ public class Deck {
         return cards.remove(cards.size() - 1);
     }
 
-    public Deck deal(List<Card> c) {
-        c.add(draw());
-        return this;
+    public Card deal(List<Card> c) {
+        Card card = draw();
+        c.add(card);
+        return card;
     }
 
-    public Deck deal(Player p) {
-        p.addCard(draw());
-        return this;
+    public Card deal(Player p) {
+        Card card = draw();
+        p.addCard(card);
+        return card;
     }
 
 

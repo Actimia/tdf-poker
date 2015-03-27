@@ -20,6 +20,10 @@ public enum Rank {
         return vals[(ordinal() + 1) % vals.length];
     }
 
+    public String verboseName() {
+        return name().toLowerCase();
+    }
+
     @Override
     public String toString() {
         return symbol;

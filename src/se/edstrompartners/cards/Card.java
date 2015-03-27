@@ -11,6 +11,10 @@ public class Card implements Comparable<Card> {
         rank = r;
     }
 
+    public String verboseName() {
+        return String.format("%s of %s", rank.verboseName(), suit.verboseName());
+    }
+
     @Override
     public String toString() {
         return "\u001b[;30;47m" + rank.toString() + suit.toString() + "\u001b[0m";

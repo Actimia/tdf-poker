@@ -80,7 +80,7 @@ public class Board {
 
         @Override
         public String toString() {
-            return p.getName() + " with " + s.kind() + ": " + s.cards();
+            return p.getName() + " with " + s.kind() + ": " + Util.formatCardList(s.cards());
         }
     }
 
@@ -92,15 +92,14 @@ public class Board {
     public BestHand checkWinner() {
         List<BestHand> bestHands = new ArrayList<>();
         for (Player p : players) {
-            ArrayList<Card> c = new ArrayList(p.getHand());
+            ArrayList<Card> c = new ArrayList<>(p.getHand());
             c.addAll(board);
             bestHands.add(new BestHand(p, ScoringHand.createBestHand(c)));
         }
         Collections.sort(bestHands);
         Collections.reverse(bestHands);
 
-        BestHand best = bestHands.get(0);
-        return best;
+        return bestHands.get(0);
     }
 
     /**
@@ -116,7 +115,8 @@ public class Board {
             sb.append("\n");
         });
         sb.append("\n");
-        sb.append(board.toString());
+        sb.append(" ");
+        sb.append(Util.formatCardList(board));
         return sb.toString();
     }
 }
