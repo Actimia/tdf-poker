@@ -6,7 +6,7 @@ import se.edstrompartners.cards.Rank;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class PairChecker implements HandChecker{
+public class PairChecker implements HandChecker {
 
     @Override
     public Optional<List<Card>> check(List<Card> cards) {
@@ -31,7 +31,7 @@ public class PairChecker implements HandChecker{
             List<Card> q2 = check(o2).get();
 
             int cmp = ScoringHand.LIST_COMPARATOR.compare(q1, q2);
-            if (cmp != 0){
+            if (cmp != 0) {
                 return cmp;
             }
 

@@ -17,7 +17,7 @@ public class TwoPairChecker implements HandChecker {
                 .filter(cs -> cs.size() == 2) // extract  pairs
                 .limit(2)                     // ensure correct number
                 .collect(Collectors.toList());
-        if(allpairs.size() == 2){
+        if (allpairs.size() == 2) {
             List<Card> total = new ArrayList<>();
             allpairs.forEach(p -> total.addAll(p));
             return Optional.of(total);
@@ -36,7 +36,7 @@ public class TwoPairChecker implements HandChecker {
             List<Card> q2 = check(o2).get();
 
             int cmp = ScoringHand.LIST_COMPARATOR.compare(q1, q2);
-            if (cmp != 0){
+            if (cmp != 0) {
                 return cmp;
             }
 

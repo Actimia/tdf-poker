@@ -2,10 +2,11 @@ package se.edstrompartners.cards;
 
 import se.edstrompartners.cards.scoring.ScoringHand;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import static se.edstrompartners.cards.Util.iota;
-import static java.util.stream.Collectors.*;
 
 public class Board {
     private Deck deck;
@@ -21,7 +22,8 @@ public class Board {
 
         deck = new Deck();
 
-        iota(numplayers).forEach(i -> players.add(new Player(board)));
+        Player.resetNameGen();
+        iota(numplayers).forEach(i -> players.add(new Player()));
 
         players.forEach(deck::deal);
         players.forEach(deck::deal);
@@ -44,25 +46,30 @@ public class Board {
         deck.deal(board);
     }
 
+    static class BestHand implements Comparable<BestHand> {
+        public Player p;
+        public ScoringHand s;
 
-    public void checkWinner(){
-
-        class BestHand implements  Comparable<BestHand>  {
-            public Player p;
-            public ScoringHand s;
-
-            public BestHand(Player p, ScoringHand s){
-                this.p = p;
-                this.s = s;
-            }
-            @Override
-            public int compareTo(BestHand o) {
-                return s.compareTo(o.s);
-            }
+        public BestHand(Player p, ScoringHand s) {
+            this.p = p;
+            this.s = s;
         }
-        
+
+        @Override
+        public int compareTo(BestHand o) {
+            return s.compareTo(o.s);
+        }
+
+        @Override
+        public String toString() {
+            return p.getName() + " with " + s.kind() + ": " + s.cards();
+        }
+    }
+
+    public BestHand checkWinner() {
+
         List<BestHand> bestHands = new ArrayList<>();
-        for(Player p: players){
+        for (Player p : players) {
             ArrayList<Card> c = new ArrayList(p.getHand());
             c.addAll(board);
             bestHands.add(new BestHand(p, ScoringHand.createBestHand(c)));
@@ -70,11 +77,12 @@ public class Board {
         Collections.sort(bestHands);
         Collections.reverse(bestHands);
 
-
-        System.out.println(bestHands.get(0).s);
+        BestHand best = bestHands.get(0);
+        return best;
 
     }
-    private static List<Card> sorted(List<Card> cs){
+
+    private static List<Card> sorted(List<Card> cs) {
         ArrayList<Card> css = new ArrayList<>(cs);
         Collections.sort(css);
         return css;
@@ -83,10 +91,12 @@ public class Board {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        players.forEach(p -> {sb.append(p); sb.append("\n");});
+        players.forEach(p -> {
+            sb.append(p);
+            sb.append("\n");
+        });
         sb.append("\n");
         sb.append(board.toString());
-        sb.append("\n");
         return sb.toString();
     }
 }

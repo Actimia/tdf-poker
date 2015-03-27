@@ -1,8 +1,9 @@
 package se.edstrompartners.cards.scoring;
 
-import java.util.*;
-
 import se.edstrompartners.cards.Card;
+
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class ScoringHand implements Comparable<ScoringHand> {
 
@@ -38,13 +39,21 @@ public class ScoringHand implements Comparable<ScoringHand> {
 
     private ScoringHand(Kind kind, List<Card> hand, List<Card> cards) {
         this.kind = kind;
-        ArrayList<Card> total = new ArrayList<>(hand);
-        cards.stream().sorted()
+        this.cards = new ArrayList<>(hand);
+
+        // these two are already sorted correctly and sorting
+        // them again can disrupt the correct order
+        // the hand 55577 would be sorted as 77555, and 432AK would become AK432
+        if (!(kind == Kind.FULLHOUSE || kind == Kind.STRAIGHT)) {
+            this.cards.sort(Card.SUIT_SENSITIVE);
+        }
+
+        List<Card> rest = cards.stream().sorted()
                 .filter(c -> !hand.contains(c))
                 .limit(Math.max(5 - hand.size(), 0))
-                .forEach(total::add);
-        this.cards = total;
-        Collections.sort(cards);
+                .collect(Collectors.toList());
+        rest.sort(Card.SUIT_SENSITIVE);
+        this.cards.addAll(rest);
     }
 
     public static ScoringHand createBestHand(List<Card> cards) {
@@ -87,16 +96,16 @@ public class ScoringHand implements Comparable<ScoringHand> {
 
     public static final Comparator<List<Card>> LIST_COMPARATOR = (l1, l2) -> {
         List<Card> lhs = new ArrayList<>(l1);
-        lhs.sort(Card.SUIT_INSENSITIVE.reversed());
+        lhs.sort(Card.SUIT_INSENSITIVE);
         List<Card> rhs = new ArrayList<>(l2);
-        rhs.sort(Card.SUIT_INSENSITIVE.reversed());
+        rhs.sort(Card.SUIT_INSENSITIVE);
 
-        Comparator<Card> cardcmp = Card.SUIT_INSENSITIVE;
+        Comparator<Card> cardcmp = Card.SUIT_INSENSITIVE.reversed();
 
         Iterator<Card> lit = lhs.iterator();
         Iterator<Card> rit = rhs.iterator();
 
-        while (lit.hasNext() || rit.hasNext()) {
+        while (lit.hasNext() && rit.hasNext()) {
             Card l = lit.next();
             Card r = rit.next();
 

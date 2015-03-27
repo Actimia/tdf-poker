@@ -9,7 +9,7 @@ import java.util.Optional;
 /**
  * Created by actim_000 on 2015-03-26.
  */
-public class RoyalFlush implements HandChecker{
+public class RoyalFlush implements HandChecker {
 
     @Override
     public Optional<List<Card>> check(List<Card> cards) {

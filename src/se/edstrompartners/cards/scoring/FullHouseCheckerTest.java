@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by actim_000 on 2015-03-27.
@@ -17,7 +17,7 @@ import static org.junit.Assert.*;
 public class FullHouseCheckerTest {
 
     @Test
-    public void testFullHouse(){
+    public void testFullHouse() {
         FullHouseChecker fh = new FullHouseChecker();
 
         List<Card> cards = new ArrayList<>();
@@ -44,9 +44,9 @@ public class FullHouseCheckerTest {
     }
 
     @Test
-    public void testFullHouseComparator(){
+    public void testFullHouseComparator() {
         FullHouseChecker fh = new FullHouseChecker();
-        Comparator<List<Card>> fhc =fh.comparator();
+        Comparator<List<Card>> fhc = fh.comparator();
 
         List<Card> cards = new ArrayList<>();
         cards.add(new Card(Suit.CLUBS, Rank.EIGHT));

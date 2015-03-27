@@ -36,7 +36,7 @@ public class StraightFlushChecker implements HandChecker {
             List<Card> q2 = check(o2).get();
 
             int cmp = ScoringHand.LIST_COMPARATOR.compare(q1, q2);
-            if (cmp != 0){
+            if (cmp != 0) {
                 return cmp;
             }
 

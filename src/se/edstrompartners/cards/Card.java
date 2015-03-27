@@ -16,12 +16,11 @@ public class Card implements Comparable<Card> {
         return rank.toString() + suit.toString();
     }
 
+    // compiler cannot determine types if this is a one liner
+    private static final Comparator<Card> fuckingcompiler = Comparator.comparing(c -> c.rank);
+    public static final Comparator<Card> SUIT_INSENSITIVE = fuckingcompiler.reversed();
 
-    public static final Comparator<Card> SUIT_INSENSITIVE = (o1, o2) ->
-            o1.rank.ordinal() - o2.rank.ordinal();
-
-    public static final Comparator<Card> SUIT_SENSITIVE = (o1, o2) ->
-            o1.rank.ordinal() - o2.rank.ordinal() == 0 ? o1.suit.ordinal() - o2.suit.ordinal() : 0;
+    public static final Comparator<Card> SUIT_SENSITIVE = SUIT_INSENSITIVE.thenComparing(c -> c.suit);
 
     @Override
     public int compareTo(Card o) {

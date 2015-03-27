@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class PairCheckerTest extends TestCase {
 
-    public void testPair(){
+    public void testPair() {
         PairChecker p = new PairChecker();
 
         // Check simple pair

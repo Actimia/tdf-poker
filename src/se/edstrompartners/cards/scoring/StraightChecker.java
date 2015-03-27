@@ -27,7 +27,7 @@ public class StraightChecker implements HandChecker {
                 }
             }
             if (candidates.size() == 5) {
-                Collections.sort(candidates);
+//                Collections.sort(candidates);
                 return Optional.of(candidates);
             }
         }
@@ -45,7 +45,7 @@ public class StraightChecker implements HandChecker {
             List<Card> q2 = check(o2).get();
 
             int cmp = ScoringHand.LIST_COMPARATOR.compare(q1, q2);
-            if (cmp != 0){
+            if (cmp != 0) {
                 return cmp;
             }
 

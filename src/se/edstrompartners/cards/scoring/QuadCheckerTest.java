@@ -8,14 +8,15 @@ import se.edstrompartners.cards.Suit;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by actim_000 on 2015-03-26.
  */
 public class QuadCheckerTest {
     @Test
-    public void testQuads(){
+    public void testQuads() {
         List<Card> cards = new ArrayList<>();
         cards.add(new Card(Suit.DIAMONDS, Rank.KING));
         cards.add(new Card(Suit.HEARTS, Rank.KING));
