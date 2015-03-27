@@ -3,6 +3,7 @@ package se.edstrompartners.cards;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by actim_000 on 2015-03-26.
@@ -68,7 +69,7 @@ public class Player {
     public String toString() {
         ArrayList<Card> sorted = new ArrayList<>(hand);
         sorted.sort(Card.SUIT_SENSITIVE);
-        return name + ": " + sorted.toString();
+        return name + ": " + sorted.stream().map(Card::toString).collect(Collectors.joining(" "));
     }
 
     public static void resetNameGen() {

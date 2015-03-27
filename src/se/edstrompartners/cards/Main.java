@@ -42,7 +42,7 @@ public class Main {
     }
 
     public static void playGame() {
-        Board b = new Board(4);
+        Board b = new Board(8);
         System.out.println(b);
         System.out.println(b.checkWinner());
 

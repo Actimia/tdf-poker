@@ -14,10 +14,7 @@ public class CardTest {
 
     @Test
     public void testCard() {
-
         Card c = new Card(Suit.HEARTS, Rank.EIGHT);
-        assertTrue(c.toString().equals("8♥"));
-
 
         Card c2 = new Card(Suit.HEARTS, Rank.EIGHT);
         assertTrue(c.equals(c2));
@@ -35,8 +32,6 @@ public class CardTest {
         assertTrue(c.compareTo(c2) > 0);
         c2 = new Card(Suit.SPADES, Rank.SEVEN);
         assertTrue(c.compareTo(c2) < 0);
-
-
     }
 
     @Test
@@ -65,5 +60,4 @@ public class CardTest {
             assertEquals(h1, res);
         }
     }
-
 }

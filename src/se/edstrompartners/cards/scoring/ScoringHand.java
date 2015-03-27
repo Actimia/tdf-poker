@@ -71,6 +71,19 @@ public class ScoringHand implements Comparable<ScoringHand> {
         throw new IllegalStateException("No hand could be found.");
     }
 
+    @Override
+    public int hashCode() {
+        return cards.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null) return false;
+        if (this == o) return true;
+        if (!this.getClass().equals(o.getClass())) return false;
+        ScoringHand sh = (ScoringHand) o;
+        return this.compareTo(sh) == 0;
+    }
 
     @Override
     public int compareTo(ScoringHand o) {
@@ -117,11 +130,39 @@ public class ScoringHand implements Comparable<ScoringHand> {
 
         return lit.hasNext() ? 1 : rit.hasNext() ? -1 : 0;
     };
-
 }
 
 interface HandChecker {
+    /**
+     * Checks whether a collection of cards(any size but not empty) contains a certain hand.
+     * Should optionally return the list of cards used for the hand (but not necessarily the rest
+     * of the cards) or an empty optional.
+     *
+     * If multiple hands are possible of the same kind, the best one should be returned, for
+     * example in the hand 456789Q, an implementation checking for straights should return 98765
+     * and not 87654.
+     *
+     * A hand should be returned even if it will be superseded by another type of hand, ie a set
+     * should be reported as a pair as well, and a full house should also be two pairs.
+     *
+     * For example, a pair checker should for the input AJ83A25 return AA or possibly (but not
+     * required) AAJ85. The order of cards should be in highest-scoring order. For example the hand
+     * K3A2Q should be ordered as 32AKQ, not AKQ32, since this straight is counted as 3-high. A
+     * full house should have the set before the pair, regardless of actual card ranks.
+     *
+     * @param cards The list of cards to be checked.
+     * @return Optional list of cards used to build the best hand possible of the kind, or empty
+     * optional.
+     */
     Optional<List<Card>> check(List<Card> cards);
 
+    /**
+     * Returns a comparator for comparing hands of this kind. Checking that both hands are of the
+     * same type before comparing is the responsibility of the caller.
+     * This is used to determine (for example) which one of two pairs are better.
+     * Must also include the extra cards (if applicable), for example 88AJ9 should beat 88KDJ.
+     *
+     * @return A comparator for hands of the same kind.
+     */
     Comparator<List<Card>> comparator();
 }

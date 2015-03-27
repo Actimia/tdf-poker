@@ -2,11 +2,12 @@ package se.edstrompartners.cards.scoring;
 
 import org.junit.Test;
 import se.edstrompartners.cards.Card;
+import se.edstrompartners.cards.Rank;
 import se.edstrompartners.cards.Util;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by actim_000 on 2015-03-27.
@@ -34,9 +35,10 @@ public class ScoringHandTest {
         }
 
         {
-            List<Card> h = Util.quickHand("SA, S2, S3, S4, SK, SQ, DQ");
+            List<Card> h = Util.quickHand("HA, S2, D3, S4, SK, SQ, DQ");
             ScoringHand sh = ScoringHand.createBestHand(h);
-            assertTrue(sh.kind() == ScoringHand.Kind.TWOPAIR);
+            assertTrue(sh.cards().get(0).rank == Rank.FOUR);
+            assertTrue(sh.kind() == ScoringHand.Kind.STRAIGHT);
         }
 
         {
@@ -59,7 +61,7 @@ public class ScoringHandTest {
     }
 
     @Test
-    public void TestComparison(){
+    public void testComparison() {
         {
             List<Card> h1 = Util.quickHand("SA SK SQ SJ S10 D7, D2");
             ScoringHand sh1 = ScoringHand.createBestHand(h1);
@@ -76,6 +78,15 @@ public class ScoringHandTest {
             List<Card> h2 = Util.quickHand("SA, HJ, DJ, DA S5 D7, D2");
             ScoringHand sh2 = ScoringHand.createBestHand(h2);
             assertTrue(sh1.compareTo(sh2) <= 0);
+        }
+
+        {
+            List<Card> h1 = Util.quickHand("C9 C6 C8 HK C10 C5 C3");
+            ScoringHand sh1 = ScoringHand.createBestHand(h1);
+
+            List<Card> h2 = Util.quickHand("S8 C8 H3 C3 HK C10 C5");
+            ScoringHand sh2 = ScoringHand.createBestHand(h2);
+            assertTrue(sh1.compareTo(sh2) >= 0);
         }
     }
 

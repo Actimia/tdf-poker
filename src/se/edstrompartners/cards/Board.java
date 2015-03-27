@@ -10,11 +10,14 @@ import static se.edstrompartners.cards.Util.iota;
 
 public class Board {
     private Deck deck;
-
     private List<Player> players = new ArrayList<>();
-
     private List<Card> board = new ArrayList<>();
 
+    /**
+     * Creates a new playing round and gives each player two hold cards.
+     * Supports up to 15 players.
+     * @param numplayers The number of players to generate.
+     */
     public Board(int numplayers) {
         if (numplayers > 15) {
             throw new IllegalArgumentException("Too many players!");
@@ -29,6 +32,9 @@ public class Board {
         players.forEach(deck::deal);
     }
 
+    /**
+     * Discards a card and draws three cards.
+     */
     public void dealFlop() {
         deck.draw();
         deck.deal(board);
@@ -36,16 +42,25 @@ public class Board {
         deck.deal(board);
     }
 
+    /**
+     * Discards a card and draws a fourth card.
+     */
     public void dealTurn() {
         deck.draw();
         deck.deal(board);
     }
 
+    /**
+     * Discards a card and draws a fifth and final card.
+     */
     public void dealRiver() {
         deck.draw();
         deck.deal(board);
     }
 
+    /**
+     * Links a player with a scored hand.
+     */
     static class BestHand implements Comparable<BestHand> {
         public Player p;
         public ScoringHand s;
@@ -55,6 +70,9 @@ public class Board {
             this.s = s;
         }
 
+        /**
+         * Compares two hands to see which is best. Inconsistent with equals.
+         */
         @Override
         public int compareTo(BestHand o) {
             return s.compareTo(o.s);
@@ -66,8 +84,12 @@ public class Board {
         }
     }
 
+    /**
+     * Determines which player currently has the strongest hand
+     * with all the cards currently usable for each player.
+     * @return The best player and their hand.
+     */
     public BestHand checkWinner() {
-
         List<BestHand> bestHands = new ArrayList<>();
         for (Player p : players) {
             ArrayList<Card> c = new ArrayList(p.getHand());
@@ -79,15 +101,13 @@ public class Board {
 
         BestHand best = bestHands.get(0);
         return best;
-
     }
 
-    private static List<Card> sorted(List<Card> cs) {
-        ArrayList<Card> css = new ArrayList<>(cs);
-        Collections.sort(css);
-        return css;
-    }
-
+    /**
+     * Provides a string representation of the current board state.
+     * Contains information about each players hold cards, as well
+     * as the public cards.
+     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
