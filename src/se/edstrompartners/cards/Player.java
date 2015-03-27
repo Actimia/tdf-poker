@@ -10,6 +10,68 @@ import java.util.stream.Collectors;
  */
 public class Player {
 
+    private static final String HIDDEN_CARDS = "\u001B[30;47m??\u001B[0m  \u001B[30;" +
+            "47m??\u001B[0m ";
+
+    protected List<Card> hand;
+    protected String name;
+    protected int chips = 1000;
+    protected boolean hidden = true;
+//    protected Role role = Role.NORMAL;
+
+    public Player() {
+        this(names.remove(0));
+    }
+
+    public Player(String name) {
+        this.name = name;
+        hand = new ArrayList<>();
+    }
+
+    public void addCard(Card c) {
+        hand.add(c);
+    }
+
+    public List<Card> getHand() {
+        return hand;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int makePlay(int toCall, Round r) {
+        return toCall;
+    }
+
+    @Override
+    public String toString() {
+        ArrayList<Card> sorted = new ArrayList<>(hand);
+        sorted.sort(Card.SUIT_SENSITIVE);
+        String showcards = sorted.stream().map(Card::toString).collect(Collectors.joining(" "));
+        return String.format("%-12s%s%8d",
+                name, showcards, chips);
+    }
+
+
+    public String getRoundState() {
+        ArrayList<Card> sorted = new ArrayList<>(hand);
+        sorted.sort(Card.SUIT_SENSITIVE);
+        String showcards = sorted.stream().map(Card::toString).collect(Collectors.joining(" "));
+        return String.format("%-12s%s%8d",
+                name, hidden ? HIDDEN_CARDS : showcards, chips);
+    }
+
+    public int addChips(int amount) {
+        chips += amount;
+        return chips;
+    }
+
+    public int removeChips(int amount) {
+        chips -= amount;
+        return chips;
+    }
+
     private static List<String> names = generateNames();
 
     private static List<String> generateNames() {
@@ -42,34 +104,6 @@ public class Player {
 
         Collections.shuffle(names);
         return names;
-    }
-
-    private List<Card> hand;
-
-    private String name;
-
-    public Player() {
-        hand = new ArrayList<>();
-        name = names.remove(0);
-    }
-
-    public void addCard(Card c) {
-        hand.add(c);
-    }
-
-    public List<Card> getHand() {
-        return hand;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public String toString() {
-        ArrayList<Card> sorted = new ArrayList<>(hand);
-        sorted.sort(Card.SUIT_SENSITIVE);
-        return name + ": " + sorted.stream().map(Card::toString).collect(Collectors.joining(" "));
     }
 
     public static void resetNameGen() {

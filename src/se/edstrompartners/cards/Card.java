@@ -17,7 +17,8 @@ public class Card implements Comparable<Card> {
 
     @Override
     public String toString() {
-        return "\u001b[;30;47m" + rank.toString() + suit.toString() + "\u001b[0m";
+        return "\u001b[;30;47m" + rank.toString() + suit.toString() + "\u001b[0m" + (rank != Rank
+                .TEN ? " " : "");
     }
 
     // compiler cannot determine types if this is a one liner
