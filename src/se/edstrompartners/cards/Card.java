@@ -32,7 +32,6 @@ public class Card implements Comparable<Card> {
         return SUIT_SENSITIVE.compare(this, o);
     }
 
-
     @Override
     public int hashCode() {
         return 20 * suit.ordinal() + rank.ordinal();

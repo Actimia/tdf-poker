@@ -11,7 +11,6 @@ import static org.junit.Assert.*;
  */
 public class CardTest {
 
-
     @Test
     public void testCard() {
         Card c = new Card(Suit.HEARTS, Rank.EIGHT);

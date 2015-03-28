@@ -47,4 +47,9 @@ public class StraightFlushChecker implements HandChecker {
             return ScoringHand.LIST_COMPARATOR.compare(o1s, o2s);
         };
     }
+
+    @Override
+    public String verboseName(List<Card> cards) {
+        return String.format("%s-high straight flush", cards.get(0).rank.verboseName());
+    }
 }

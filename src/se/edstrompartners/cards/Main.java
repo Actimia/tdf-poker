@@ -3,7 +3,7 @@ package se.edstrompartners.cards;
 public class Main {
 
     public static void main(String[] args) {
-        playGame();
+        playAIGame();
 //        testTiming();
     }
 
@@ -41,6 +41,11 @@ public class Main {
 
     public static void playGame() {
         Game game = new Game(4, "Actimia");
+        game.play();
+    }
+
+    public static void playAIGame() {
+        Game game = new Game(10);
         game.play();
     }
 }

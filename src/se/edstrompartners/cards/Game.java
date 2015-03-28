@@ -11,8 +11,22 @@ public class Game {
     private List<Player> players = new ArrayList<>();
 
     /**
-     * Creates a new game with new players.
-     * Supports up to 15 players.
+     * Creates a new game with only AI players.
+     *
+     * @param numplayers The number of players to generate.
+     */
+    public Game(int numplayers) {
+        if (numplayers > 15) {
+            throw new IllegalArgumentException("Too many players!");
+        }
+        Player.resetNameGen();
+        iota(numplayers).forEach(i -> players.add(new Player()));
+        Collections.shuffle(players);
+    }
+
+    /**
+     * Creates a new game with new players including a human player.
+     * Supports up to 16 players including the human player.
      *
      * @param numplayers The number of players to generate.
      */
@@ -46,33 +60,6 @@ public class Game {
         }
         Player winner = players.get(0);
         System.out.println(winner.name + " wins after " + hands + " hands! Congratulations!");
-    }
-
-    public void playNaive() {
-        Round round = new Round(this);
-        System.out.println(round);
-        System.out.println(round.checkWinner());
-
-        System.out.println();
-        System.out.println();
-
-        round.dealFlop();
-        System.out.println(round);
-        System.out.println(round.checkWinner());
-
-        System.out.println();
-        System.out.println();
-
-        round.dealTurn();
-        System.out.println(round);
-        System.out.println(round.checkWinner());
-
-        System.out.println();
-        System.out.println();
-
-        round.dealRiver();
-        System.out.println(round);
-        System.out.println(round.checkWinner());
     }
 
     public List<Player> getPlayers() {

@@ -43,4 +43,9 @@ public class PairChecker implements HandChecker {
             return ScoringHand.LIST_COMPARATOR.compare(o1s, o2s);
         };
     }
+
+    @Override
+    public String verboseName(List<Card> cards) {
+        return String.format("pair of %ss", cards.get(0).rank.verboseName());
+    }
 }

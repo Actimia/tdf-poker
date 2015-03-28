@@ -43,4 +43,9 @@ public class QuadChecker implements HandChecker {
             return ScoringHand.LIST_COMPARATOR.compare(o1s, o2s);
         };
     }
+
+    @Override
+    public String verboseName(List<Card> cards) {
+        return String.format("quad %ss", cards.get(0).rank.verboseName());
+    }
 }

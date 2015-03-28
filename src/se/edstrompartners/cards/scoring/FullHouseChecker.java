@@ -59,4 +59,10 @@ public class FullHouseChecker implements HandChecker {
             return ScoringHand.LIST_COMPARATOR.compare(o1s, o2s);
         };
     }
+
+    @Override
+    public String verboseName(List<Card> cards) {
+        return String.format("full house, %ss full of %ss", cards.get(0).rank.verboseName(),
+                cards.get(3).rank.verboseName());
+    }
 }

@@ -48,4 +48,10 @@ public class TwoPairChecker implements HandChecker {
             return ScoringHand.LIST_COMPARATOR.compare(o1s, o2s);
         };
     }
+
+    @Override
+    public String verboseName(List<Card> cards) {
+        return String.format("two pairs, %ss and %ss", cards.get(0).rank.verboseName(), cards.get
+                (2).rank.verboseName());
+    }
 }

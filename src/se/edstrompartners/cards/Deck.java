@@ -31,7 +31,6 @@ public class Deck {
         return card;
     }
 
-
     @Override
     public String toString() {
         return "..." + cards.subList(cards.size() - 10, cards.size()).toString();

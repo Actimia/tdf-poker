@@ -24,4 +24,9 @@ public class RoyalFlush implements HandChecker {
     public Comparator<List<Card>> comparator() {
         return (o1, o2) -> 0;
     }
+
+    @Override
+    public String verboseName(List<Card> cards) {
+        return "royal straight flush";
+    }
 }

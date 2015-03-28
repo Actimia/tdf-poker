@@ -83,13 +83,14 @@ public class ScoringHand implements Comparable<ScoringHand> {
     public boolean equals(Object o) {
         if (o == null) return false;
         if (this == o) return true;
+
         if (!this.getClass().equals(o.getClass())) return false;
         ScoringHand sh = (ScoringHand) o;
-        return this.compareTo(sh) == 0;
+        return this.cards.equals(sh.cards);
     }
 
     /**
-     * Determines which of two hands is the better.
+     * Determines which of two hands is the better. Inconsistent with equals.
      */
     @Override
     public int compareTo(ScoringHand o) {
@@ -100,6 +101,9 @@ public class ScoringHand implements Comparable<ScoringHand> {
         return diff;
     }
 
+    public String verboseName() {
+        return kind.checker.verboseName(cards);
+    }
 
     public String toString() {
         return kind.toString() + ": " + cards.stream()
@@ -180,4 +184,6 @@ interface HandChecker {
      * @return A comparator for hands of the same kind.
      */
     Comparator<List<Card>> comparator();
+
+    String verboseName(List<Card> cards);
 }

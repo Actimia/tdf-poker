@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Round {
 
@@ -56,6 +57,7 @@ public class Round {
         winner.p.addChips(pot.getTotal());
         System.out.println(this);
         System.out.println(winner);
+        System.out.println();
     }
 
     private void bettingRound() {
@@ -87,19 +89,24 @@ public class Round {
         }
     }
 
+    public List<Card> getHand(Player p) {
+        List<Card> res = new ArrayList<>(p.getHand());
+        res.addAll(board);
+        return res;
+    }
+
     /**
      * Determines which player currently has the strongest hand
      * with all the cards currently usable for each player.
      *
+     * #TODO: split pots
+     *
      * @return The best player and their hand.
      */
     public BestHand checkWinner() {
-        List<BestHand> bestHands = new ArrayList<>();
-        for (Player p : players) {
-            ArrayList<Card> c = new ArrayList<>(p.getHand());
-            c.addAll(board);
-            bestHands.add(new BestHand(p, ScoringHand.createBestHand(c)));
-        }
+        List<BestHand> bestHands = players.stream()
+                .map(p -> new BestHand(p, ScoringHand.createBestHand(getHand(p))))
+                .collect(Collectors.toList());
         Collections.sort(bestHands);
         Collections.reverse(bestHands);
 
@@ -164,5 +171,9 @@ public class Round {
         if (!board.isEmpty()) {
             System.out.println("\t" + Util.formatCardList(board));
         }
+    }
+
+    public int playersLeft() {
+        return players.size();
     }
 }

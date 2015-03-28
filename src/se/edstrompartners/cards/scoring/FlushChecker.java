@@ -23,4 +23,10 @@ public class FlushChecker implements HandChecker {
     public Comparator<List<Card>> comparator() {
         return ScoringHand.LIST_COMPARATOR;
     }
+
+    @Override
+    public String verboseName(List<Card> cards) {
+        Card first = cards.get(0);
+        return String.format("%s-high flush", first.rank.verboseName());
+    }
 }

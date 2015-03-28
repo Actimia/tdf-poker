@@ -20,4 +20,9 @@ public class HighCardChecker implements HandChecker {
     public Comparator<List<Card>> comparator() {
         return ScoringHand.LIST_COMPARATOR;
     }
+
+    @Override
+    public String verboseName(List<Card> cards) {
+        return String.format("%s-high", cards.get(0).rank.verboseName());
+    }
 }

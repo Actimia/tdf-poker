@@ -1,5 +1,7 @@
 package se.edstrompartners.cards;
 
+import se.edstrompartners.cards.scoring.ScoringHand;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -37,9 +39,31 @@ public class Player {
         return name;
     }
 
+    /**
+     * Make a decision to bet/fold/call.
+     *
+     * Returning a negative number is a fold.
+     *
+     * If toCall is 0, returning 0 is a check.
+     *
+     * If toCall is not 0, returning toCall is a call.
+     *
+     * Returning a number greater than toCall is a bet/raise.
+     *
+     * Currently a very naive implementation which always calls, no matter what.
+     * #TODO: At least a somewhat less naive AI.
+     *
+     * @param toCall the amount needed to bet to call.
+     * @param r      The current game round.
+     */
     public int makePlay(int toCall, Round r) {
-        return Math.random() < 0.1 ? -1 : toCall;
+//        return Math.random() < 0.1 ? -1 : toCall;
 //        return -1;
+        if (r.playersLeft() == 1) {
+            return toCall;
+        }
+        ScoringHand hand = ScoringHand.createBestHand(r.getHand(this));
+        return toCall;
     }
 
     @Override
@@ -50,7 +74,6 @@ public class Player {
         return String.format("%-12s%s%8d",
                 name, showcards, chips);
     }
-
 
     public String getRoundState() {
         ArrayList<Card> sorted = new ArrayList<>(hand);
