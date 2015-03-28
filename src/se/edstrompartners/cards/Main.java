@@ -4,6 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
         playAIGame();
+//        playGame();
 //        testTiming();
     }
 
@@ -15,7 +16,7 @@ public class Main {
 //                System.out.println(i);
 //            }
 //            Game.BestHand winner = playGameQuiet();
-//            wins[winner.s.kind().ordinal()]++;
+//            wins[winner.hand.kind().ordinal()]++;
 //        }
 //        time = System.currentTimeMillis() - time;
 //        for (int j = 0; j < wins.length; j++) {

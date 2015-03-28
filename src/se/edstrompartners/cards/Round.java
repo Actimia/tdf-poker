@@ -23,7 +23,7 @@ public class Round {
         Player big = players.get(players.size() - 1);
         Player small = players.get(players.size() - 2);
 
-//        players.forEach(p -> p.role = Role.NORMAL);
+//        players.forEach(player -> player.role = Role.NORMAL);
         pot.bet(big, 100);
 //        big.role = Role.BIGBLIND;
         pot.bet(small, 50);
@@ -54,38 +54,43 @@ public class Round {
             bettingRound();
         }
         BestHand winner = checkWinner();
-        winner.p.addChips(pot.getTotal());
+        winner.player.addChips(pot.getTotal());
         System.out.println(this);
         System.out.println(winner);
         System.out.println();
     }
 
     private void bettingRound() {
-
-        // first an initial round of betting
+        // First, we make sure everyone gets to bet
         Iterator<Player> pit = players.iterator();
-        while (pit.hasNext()) {
+        while (pit.hasNext() && playersLeft() > 1) {
             Player p = pit.next();
-            int toCall = pot.toCall(p);
-            int bet = p.makePlay(toCall, this);
-            if (bet == -1) {
-                pot.fold(p);
+            if (!individualBet(p)) {
                 pit.remove();
-            } else {
-                pot.bet(p, bet);
             }
         }
-        // then we bet until everyone is happy
-        pit = players.iterator();
-        while (!pot.bettingDone() && pit.hasNext()) {
-            Player p = pit.next();
-            int toCall = pot.toCall(p);
-            int bet = p.makePlay(toCall, this);
-            if (bet == -1) {
-                pot.fold(p);
-            } else {
-                pot.bet(p, bet);
+
+        // then we make keep betting until its done
+        while (!pot.bettingDone() && playersLeft() > 1) {
+            pit = players.iterator();
+            while (pit.hasNext() && !pot.bettingDone() && playersLeft() > 1) {
+                Player p = pit.next();
+                if (!individualBet(p)) {
+                    pit.remove();
+                }
             }
+        }
+    }
+
+    private boolean individualBet(Player p) {
+        int toCall = pot.toCall(p);
+        int bet = p.makePlay(toCall, this);
+        if (bet < 0) {
+            pot.fold(p);
+            return false;
+        } else {
+            pot.bet(p, bet);
+            return true;
         }
     }
 

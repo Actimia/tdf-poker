@@ -22,6 +22,8 @@ public class Pot {
             p.removeChips(amount);
             bets.put(p, amount);
         }
+
+//        System.out.println(p.name + " bet " + amount);
     }
 
     public int getTotal() {
@@ -37,13 +39,14 @@ public class Pot {
      * Every player left in the game has bet the same amount.
      */
     public boolean bettingDone() {
-        return total > 0 && bets.values().stream()
+        return bets.values().stream()
                 .distinct()
                 .count() == 1;
     }
 
     public void fold(Player p) {
         bets.remove(p);
+//        System.out.println(p.name + " folded");
     }
 
     public int toCall(Player p) {

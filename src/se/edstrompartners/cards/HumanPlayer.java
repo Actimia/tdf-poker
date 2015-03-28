@@ -17,7 +17,9 @@ public class HumanPlayer extends Player {
         ScoringHand sh = ScoringHand.createBestHand(r.getHand(this));
         Scanner sc = new Scanner(System.in, "UTF-8");
         r.printCurrentState();
-        System.out.println("You currently have a " + sh.verboseName());
+        if (!sh.kind().equals(ScoringHand.Kind.HIGHCARD)) {
+            System.out.println("You have a " + sh.verboseName() + ".");
+        }
         System.out.println("Your turn to bet! " + toCall + " to call!");
         int bet = sc.nextInt();
         return bet;

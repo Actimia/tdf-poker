@@ -1,7 +1,5 @@
 package se.edstrompartners.cards;
 
-import se.edstrompartners.cards.scoring.ScoringHand;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -57,13 +55,13 @@ public class Player {
      * @param r      The current game round.
      */
     public int makePlay(int toCall, Round r) {
-//        return Math.random() < 0.1 ? -1 : toCall;
+        return Math.random() < 0.1 ? -1 : toCall;
 //        return -1;
-        if (r.playersLeft() == 1) {
-            return toCall;
-        }
-        ScoringHand hand = ScoringHand.createBestHand(r.getHand(this));
-        return toCall;
+//        ScoringHand hand = ScoringHand.createBestHand(r.getHand(this));
+//        if(toCall == 51){
+//            return 100;
+//        }
+//        return toCall;
     }
 
     @Override

@@ -3,12 +3,12 @@ package se.edstrompartners.cards;
 import se.edstrompartners.cards.scoring.ScoringHand;
 
 public class BestHand implements Comparable<BestHand> {
-    public Player p;
-    public ScoringHand s;
+    public Player player;
+    public ScoringHand hand;
 
     public BestHand(Player p, ScoringHand s) {
-        this.p = p;
-        this.s = s;
+        this.player = p;
+        this.hand = s;
     }
 
     /**
@@ -16,11 +16,12 @@ public class BestHand implements Comparable<BestHand> {
      */
     @Override
     public int compareTo(BestHand o) {
-        return s.compareTo(o.s);
+        return hand.compareTo(o.hand);
     }
 
     @Override
     public String toString() {
-        return p.getName() + " with " + s.kind() + ": \n\t" + Util.formatCardList(s.cards());
+        return player.getName() + " with " + hand.verboseName() + ": \n\t" + Util.formatCardList(hand.cards
+                ());
     }
 }
