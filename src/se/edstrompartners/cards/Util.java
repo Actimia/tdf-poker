@@ -47,7 +47,8 @@ public class Util {
                 case 'C':
                     s = Suit.CLUBS;
                     break;
-                default: throw new IllegalArgumentException("Malformed input string");
+                default:
+                    throw new IllegalArgumentException("Malformed input string");
             }
 
             Rank r;
@@ -91,7 +92,8 @@ public class Util {
                 case 'A':
                     r = Rank.ACE;
                     break;
-                default: throw new IllegalArgumentException("Malformed input string");
+                default:
+                    throw new IllegalArgumentException("Malformed input string");
             }
             cards.add(new Card(s, r));
         }

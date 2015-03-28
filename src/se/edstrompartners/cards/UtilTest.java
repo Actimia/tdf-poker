@@ -24,5 +24,4 @@ public class UtilTest {
 
         assertEquals(cards, hand);
     }
-
 }

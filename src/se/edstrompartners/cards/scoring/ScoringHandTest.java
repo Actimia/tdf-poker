@@ -89,5 +89,4 @@ public class ScoringHandTest {
             assertTrue(sh1.compareTo(sh2) >= 0);
         }
     }
-
 }

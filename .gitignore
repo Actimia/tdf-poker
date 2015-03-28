@@ -8,6 +8,7 @@
 
 # Package Files #
 *.jar
+!tdf-poker*.jar
 *.war
 *.ear
 

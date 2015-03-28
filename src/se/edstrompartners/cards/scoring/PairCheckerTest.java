@@ -55,7 +55,5 @@ public class PairCheckerTest extends TestCase {
 
         List<Card> fp = p.check(cards).get();
         assertTrue(fp.equals(b));
-
     }
-
 }

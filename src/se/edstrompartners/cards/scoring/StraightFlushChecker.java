@@ -22,7 +22,6 @@ public class StraightFlushChecker implements HandChecker {
                         .orElse(Stream.empty()))
                 .sorted(ScoringHand.LIST_COMPARATOR)
                 .findFirst();
-
     }
 
     @Override

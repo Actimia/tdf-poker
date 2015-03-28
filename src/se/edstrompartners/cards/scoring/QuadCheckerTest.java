@@ -40,5 +40,4 @@ public class QuadCheckerTest {
 
         assertFalse(qc.check(cards).isPresent());
     }
-
 }

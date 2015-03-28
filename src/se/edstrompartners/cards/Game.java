@@ -46,7 +46,6 @@ public class Game {
         }
         Player winner = players.get(0);
         System.out.println(winner.name + " wins after " + hands + " hands! Congratulations!");
-
     }
 
     public void playNaive() {
