@@ -11,7 +11,7 @@ public class HumanPlayer extends Player {
 
     @Override
     public int makePlay(int toCall, Round r) {
-        Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in, "UTF-8");
         r.printCurrentState();
         System.out.println("Your turn to bet! " + toCall + " to call!");
         int bet = sc.nextInt();

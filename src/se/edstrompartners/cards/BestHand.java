@@ -2,7 +2,7 @@ package se.edstrompartners.cards;
 
 import se.edstrompartners.cards.scoring.ScoringHand;
 
-class BestHand implements Comparable<BestHand> {
+public class BestHand implements Comparable<BestHand> {
     public Player p;
     public ScoringHand s;
 
@@ -21,6 +21,6 @@ class BestHand implements Comparable<BestHand> {
 
     @Override
     public String toString() {
-        return p.getName() + " with " + s.kind() + ": " + Util.formatCardList(s.cards());
+        return p.getName() + " with " + s.kind() + ": \n\t" + Util.formatCardList(s.cards());
     }
 }

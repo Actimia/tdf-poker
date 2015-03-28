@@ -149,8 +149,7 @@ public class Round {
 
             sb.append("\n");
         });
-        sb.append("\n");
-        sb.append(" ");
+        sb.append("\n\t");
         sb.append(Util.formatCardList(board));
         return sb.toString();
     }
@@ -163,7 +162,7 @@ public class Round {
                 .forEach(System.out::println);
 
         if (!board.isEmpty()) {
-            System.out.println(board);
+            System.out.println("\t" + Util.formatCardList(board));
         }
     }
 }
