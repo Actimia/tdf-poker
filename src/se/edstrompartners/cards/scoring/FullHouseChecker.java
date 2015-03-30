@@ -32,8 +32,8 @@ public class FullHouseChecker implements HandChecker {
 
             return pair
                     .map(p -> { // add the set back
-                        p.addAll(set);
-                        return p;
+                        set.addAll(p);
+                        return set;
                     });
         }
         return Optional.empty();

@@ -17,7 +17,7 @@ public class Card implements Comparable<Card> {
 
     @Override
     public String toString() {
-        return "\u001b[;30;47m" + rank.toString() + suit.toString() + "\u001b[0m" + (rank != Rank
+        return "\u001b[;30;47m" + rank.toString() + "\u001b[0m" + suit.toString() + (rank != Rank
                 .TEN ? " " : "");
     }
 

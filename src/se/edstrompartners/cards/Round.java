@@ -20,14 +20,11 @@ public class Round {
         this.game = game;
         players = new ArrayList<>(game.getPlayers());
 
-        Player big = players.get(players.size() - 1);
         Player small = players.get(players.size() - 2);
+        Player big = players.get(players.size() - 1);
 
-//        players.forEach(player -> player.role = Role.NORMAL);
-        pot.bet(big, 100);
-//        big.role = Role.BIGBLIND;
-        pot.bet(small, 50);
-//        small.role = Role.SMALLBLIND;
+        small.chips -= pot.bet(small, 50);
+        big.chips -= pot.bet(big, 100);
 
         players.forEach(deck::deal);
         players.forEach(deck::deal);
@@ -53,8 +50,11 @@ public class Round {
             pot.newRound();
             bettingRound();
         }
-        BestHand winner = checkWinner();
-        winner.player.addChips(pot.getTotal());
+//        BestHand winner = checkWinner();
+//        winner.player.addChips(pot.getTotal());
+        List<BestHand> hands = checkWinner();
+        pot.resolvePot(hands);
+        BestHand winner = hands.get(0);
         System.out.println(this);
         System.out.println(winner);
         System.out.println();
@@ -89,7 +89,7 @@ public class Round {
             pot.fold(p);
             return false;
         } else {
-            pot.bet(p, bet);
+            p.chips -= pot.bet(p, bet);
             return true;
         }
     }
@@ -108,14 +108,14 @@ public class Round {
      *
      * @return The best player and their hand.
      */
-    public BestHand checkWinner() {
+    public List<BestHand> checkWinner() {
         List<BestHand> bestHands = players.stream()
                 .map(p -> new BestHand(p, ScoringHand.createBestHand(getHand(p))))
                 .collect(Collectors.toList());
         Collections.sort(bestHands);
         Collections.reverse(bestHands);
 
-        return bestHands.get(0);
+        return bestHands;
     }
 
     /**

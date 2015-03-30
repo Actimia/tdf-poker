@@ -46,7 +46,7 @@ public class Main {
     }
 
     public static void playAIGame() {
-        Game game = new Game(10);
+        Game game = new Game(5);
         game.play();
     }
 }

@@ -71,6 +71,7 @@ public class Player {
         String showcards = sorted.stream().map(Card::toString).collect(Collectors.joining(" "));
         return String.format("%-12s%s%8d",
                 name, showcards, chips);
+//        return name;
     }
 
     public String getRoundState() {
