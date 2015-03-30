@@ -3,8 +3,8 @@ package se.edstrompartners.cards;
 public class Main {
 
     public static void main(String[] args) {
-        playAIGame();
-//        playGame();
+//        playAIGame();
+        playGame();
 //        testTiming();
     }
 
